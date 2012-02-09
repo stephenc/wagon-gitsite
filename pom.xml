@@ -497,7 +497,7 @@
        deliverables are signed with GPG.
      -->
     <profile>
-      <id>release-sign-artifacts</id>
+      <id>sonatype-oss-release</id>
       <activation>
         <property>
           <name>performRelease</name>

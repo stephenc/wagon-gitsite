@@ -1,20 +1,16 @@
 <project name="Wagon GitSite">
 	<publishDate position="navigation-bottom" format="dd MMM yyyy" />
 	<version position="left" />
-	<bannerLeft>
-		<name>kathrynhuxtable.org</name>
-		<src>http://www.kathrynhuxtable.org/imagedir/kathrynhuxtable.org.gif</src>
-		<href>http://www.kathrynhuxtable.org/</href>
-	</bannerLeft>
 	<bannerRight>
 		<name>Wagon GitSite</name>
-		<src>http://khuxtable.github.com/wagon-gitsite/images/logos/WagonGitSiteLogo.png</src>
+		<src>http://stephenc.github.com/wagon-gitsite/images/logos/WagonGitSiteLogo.png</src>
 	</bannerRight>
-    <skin>
-        <groupId>org.kathrynhuxtable.maven.skins</groupId>
-        <artifactId>green-site-skin</artifactId>
-        <version>1.0</version>
-    </skin>
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.1</version>
+  </skin>
+
 	<body>
 		<links>
 			<item name="Kathryn Huxtable's Projects" href="http://www.kathrynhuxtable.org/blog/projects/" />
@@ -47,4 +43,13 @@
             <item href="taglist.html" name="Tag List" />
         </menu>
 	</body>
+  <custom>
+    <fluidoSkin>
+      <gitHub>
+        <projectId>stephenc/wagon-gitsite</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+        <ribbonColor>black</ribbonColor>
+      </gitHub>
+    </fluidoSkin>
+  </custom>
 </project>
