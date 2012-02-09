@@ -1,0 +1,25 @@
+-classpath
+'/Users/stephenc/github/wagon-gitsite/target/checkout/target/classes:/Users/stephenc/.m2/repository/org/apache/maven/scm/maven-scm-provider-git-commons/1.5/maven-scm-provider-git-commons-1.5.jar:/Users/stephenc/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0/wagon-provider-api-1.0.jar:/Users/stephenc/.m2/repository/org/codehaus/plexus/plexus-utils/3.0/plexus-utils-3.0.jar:/Users/stephenc/.m2/repository/org/apache/maven/scm/maven-scm-api/1.5/maven-scm-api-1.5.jar:/Users/stephenc/.m2/repository/regexp/regexp/1.3/regexp-1.3.jar:/Users/stephenc/.m2/repository/org/apache/maven/scm/maven-scm-provider-gitexe/1.5/maven-scm-provider-gitexe-1.5.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/stephenc/github/wagon-gitsite/target/checkout/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2010-2012 <a href="http://www.kathrynhuxtable.org">kathrynhuxtable.org</a>. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/stephenc/github/wagon-gitsite/target/checkout/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Maven Wagon GitHub Pages Provider 0.4 API'
+-linkoffline
+'http://download.oracle.com/javase/1.5.0/docs/api' '/Users/stephenc/github/wagon-gitsite/target/checkout/target/javadoc-bundle-options'
+-notimestamp
+-use
+-version
+-windowtitle
+'Maven Wagon GitHub Pages Provider 0.4 API'

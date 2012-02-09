@@ -4,7 +4,7 @@
 <HEAD>
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <TITLE>
-GitSiteWagon (Maven Wagon GitHub Pages Provider 0.2 API)
+GitSiteWagon (Maven Wagon GitHub Pages Provider 0.4 API)
 </TITLE>
 
 
@@ -14,7 +14,7 @@ GitSiteWagon (Maven Wagon GitHub Pages Provider 0.2 API)
 function windowTitle()
 {
     if (location.href.indexOf('is-external=true') == -1) {
-        parent.document.title="GitSiteWagon (Maven Wagon GitHub Pages Provider 0.2 API)";
+        parent.document.title="GitSiteWagon (Maven Wagon GitHub Pages Provider 0.4 API)";
     }
 }
 </SCRIPT>
@@ -91,7 +91,7 @@ org.kathrynhuxtable.maven.wagon.gitsite</FONT>
 <BR>
 Class GitSiteWagon</H2>
 <PRE>
-<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
   <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by ">org.apache.maven.wagon.AbstractWagon
       <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><B>org.kathrynhuxtable.maven.wagon.gitsite.GitSiteWagon</B>
 </PRE>
@@ -120,6 +120,18 @@ Wagon provider to deploy site documentation to GitHub's pages system.
  git commit -a -m "Wagon: Deploying site to repository"
  git push origin master:${siteBranch}
  rm -Rf ${checkoutDirectory}
+ </pre>
+ 
+ We <em>need</em> to create the gh-pages branch if it doesn't already exist:
+ 
+ <pre>
+ cd ${checkoutDirectory}
+ git symbolic-ref HEAD refs/heads/gh-pages
+ rm .git/index
+ git clean -fdx
+ git add .
+ git commit -a -m "First pages commit"
+ git push origin gh-pages
  </pre>
 <P>
 
@@ -216,15 +228,15 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#get(java.lang.String, java.io.File)">get</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
-    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination)</CODE>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#get(java.lang.String, java.io.File)">get</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
+    <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getCheckoutDirectory()">getCheckoutDirectory</A></B>()</CODE>
 
 <BR>
@@ -232,8 +244,8 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getFileList(java.lang.String)">getFileList</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourcePath)</CODE>
+<CODE>&nbsp;<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getFileList(java.lang.String)">getFileList</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourcePath)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the file list for the resource.</TD>
@@ -241,8 +253,8 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getIfNewer(java.lang.String, java.io.File, long)">getIfNewer</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
-           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination,
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getIfNewer(java.lang.String, java.io.File, long)">getIfNewer</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
+           <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination,
            long&nbsp;timestamp)</CODE>
 
 <BR>
@@ -259,7 +271,7 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;org.apache.maven.scm.provider.ScmProvider</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getScmProvider(java.lang.String)">getScmProvider</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;scmType)</CODE>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getScmProvider(java.lang.String)">getScmProvider</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;scmType)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Convenience method to get the <CODE>ScmProvider</CODE> implementation to
@@ -267,11 +279,11 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#getSiteBranch()">getSiteBranch</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the <CODE>siteBranch</CODE> used in this Wagon.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the <A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#siteBranch"><CODE>siteBranch</CODE></A> used in this Wagon.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -284,8 +296,8 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#put(java.io.File, java.lang.String)">put</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;source,
-    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destination)</CODE>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#put(java.io.File, java.lang.String)">put</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;source,
+    <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destination)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -293,8 +305,8 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#putDirectory(java.io.File, java.lang.String)">putDirectory</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;sourceDirectory,
-             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destinationDirectory)</CODE>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#putDirectory(java.io.File, java.lang.String)">putDirectory</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;sourceDirectory,
+             <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destinationDirectory)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -302,7 +314,7 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#resourceExists(java.lang.String)">resourceExists</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName)</CODE>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#resourceExists(java.lang.String)">resourceExists</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -310,7 +322,7 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#setCheckoutDirectory(java.io.File)">setCheckoutDirectory</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;checkoutDirectory)</CODE>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#setCheckoutDirectory(java.io.File)">setCheckoutDirectory</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;checkoutDirectory)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the directory where Wagon will checkout files from SCM.</TD>
@@ -326,10 +338,10 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#setSiteBranch(java.lang.String)">setSiteBranch</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;siteBranch)</CODE>
+<TD><CODE><B><A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#setSiteBranch(java.lang.String)">setSiteBranch</A></B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;siteBranch)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the <CODE>siteBranch</CODE> used in this Wagon.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the <A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#siteBranch"><CODE>siteBranch</CODE></A> used in this Wagon.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -352,10 +364,10 @@ Wagon provider to deploy site documentation to GitHub's pages system.
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+<TD><CODE><A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -418,13 +430,13 @@ public void <B>setScmManager</B>(org.apache.maven.scm.manager.ScmManager&nbsp;sc
 <A NAME="getSiteBranch()"><!-- --></A><H3>
 getSiteBranch</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <B>getSiteBranch</B>()</PRE>
+public <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <B>getSiteBranch</B>()</PRE>
 <DL>
-<DD>Get the <CODE>siteBranch</CODE> used in this Wagon.
+<DD>Get the <A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#siteBranch"><CODE>siteBranch</CODE></A> used in this Wagon.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the <CODE>siteBranch</CODE>.</DL>
+<DT><B>Returns:</B><DD>the <A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#siteBranch"><CODE>siteBranch</CODE></A>.</DL>
 </DD>
 </DL>
 <HR>
@@ -432,9 +444,9 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is
 <A NAME="setSiteBranch(java.lang.String)"><!-- --></A><H3>
 setSiteBranch</H3>
 <PRE>
-public void <B>setSiteBranch</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;siteBranch)</PRE>
+public void <B>setSiteBranch</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;siteBranch)</PRE>
 <DL>
-<DD>Set the <CODE>siteBranch</CODE> used in this Wagon.
+<DD>Set the <A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#siteBranch"><CODE>siteBranch</CODE></A> used in this Wagon.
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>siteBranch</CODE> - the siteBranch to set.</DL>
@@ -445,14 +457,14 @@ public void <B>setSiteBranch</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/ap
 <A NAME="getCheckoutDirectory()"><!-- --></A><H3>
 getCheckoutDirectory</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <B>getCheckoutDirectory</B>()</PRE>
+public <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <B>getCheckoutDirectory</B>()</PRE>
 <DL>
 <DD>Get the directory where Wagon will checkout files from SCM. This
  directory will be deleted!
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the <CODE>checkoutDirectory</CODE>.</DL>
+<DT><B>Returns:</B><DD>the <A HREF="../../../../../org/kathrynhuxtable/maven/wagon/gitsite/GitSiteWagon.html#checkoutDirectory"><CODE>checkoutDirectory</CODE></A>.</DL>
 </DD>
 </DL>
 <HR>
@@ -460,7 +472,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-ext
 <A NAME="setCheckoutDirectory(java.io.File)"><!-- --></A><H3>
 setCheckoutDirectory</H3>
 <PRE>
-public void <B>setCheckoutDirectory</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;checkoutDirectory)</PRE>
+public void <B>setCheckoutDirectory</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;checkoutDirectory)</PRE>
 <DL>
 <DD>Set the directory where Wagon will checkout files from SCM. This
  directory will be deleted!
@@ -474,7 +486,7 @@ public void <B>setCheckoutDirectory</B>(<A HREF="http://java.sun.com/j2se/1.5.0/
 <A NAME="getScmProvider(java.lang.String)"><!-- --></A><H3>
 getScmProvider</H3>
 <PRE>
-public org.apache.maven.scm.provider.ScmProvider <B>getScmProvider</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;scmType)
+public org.apache.maven.scm.provider.ScmProvider <B>getScmProvider</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;scmType)
                                                          throws org.apache.maven.scm.manager.NoSuchScmProviderException</PRE>
 <DL>
 <DD>Convenience method to get the <CODE>ScmProvider</CODE> implementation to
@@ -552,8 +564,8 @@ public void <B>connect</B>(org.apache.maven.wagon.repository.Repository&nbsp;rep
 <A NAME="put(java.io.File, java.lang.String)"><!-- --></A><H3>
 put</H3>
 <PRE>
-public void <B>put</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;source,
-                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destination)
+public void <B>put</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;source,
+                <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destination)
          throws org.apache.maven.wagon.TransferFailedException</PRE>
 <DL>
 <DD><DL>
@@ -567,8 +579,8 @@ public void <B>put</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/
 <A NAME="putDirectory(java.io.File, java.lang.String)"><!-- --></A><H3>
 putDirectory</H3>
 <PRE>
-public void <B>putDirectory</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;sourceDirectory,
-                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destinationDirectory)
+public void <B>putDirectory</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;sourceDirectory,
+                         <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;destinationDirectory)
                   throws org.apache.maven.wagon.TransferFailedException,
                          org.apache.maven.wagon.ResourceDoesNotExistException,
                          org.apache.maven.wagon.authorization.AuthorizationException</PRE>
@@ -606,8 +618,8 @@ public void <B>closeConnection</B>()
 <A NAME="getIfNewer(java.lang.String, java.io.File, long)"><!-- --></A><H3>
 getIfNewer</H3>
 <PRE>
-public boolean <B>getIfNewer</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
-                          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination,
+public boolean <B>getIfNewer</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
+                          <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination,
                           long&nbsp;timestamp)
                    throws org.apache.maven.wagon.TransferFailedException,
                           org.apache.maven.wagon.ResourceDoesNotExistException,
@@ -627,8 +639,8 @@ public boolean <B>getIfNewer</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/ap
 <A NAME="get(java.lang.String, java.io.File)"><!-- --></A><H3>
 get</H3>
 <PRE>
-public void <B>get</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
-                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination)
+public void <B>get</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName,
+                <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destination)
          throws org.apache.maven.wagon.TransferFailedException,
                 org.apache.maven.wagon.ResourceDoesNotExistException,
                 org.apache.maven.wagon.authorization.AuthorizationException</PRE>
@@ -646,7 +658,7 @@ public void <B>get</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lan
 <A NAME="getFileList(java.lang.String)"><!-- --></A><H3>
 getFileList</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <B>getFileList</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourcePath)
+public <A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <B>getFileList</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourcePath)
                          throws org.apache.maven.wagon.TransferFailedException,
                                 org.apache.maven.wagon.ResourceDoesNotExistException,
                                 org.apache.maven.wagon.authorization.AuthorizationException</PRE>
@@ -671,7 +683,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-e
 <A NAME="resourceExists(java.lang.String)"><!-- --></A><H3>
 resourceExists</H3>
 <PRE>
-public boolean <B>resourceExists</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName)
+public boolean <B>resourceExists</B>(<A HREF="http://download.oracle.com/javase/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resourceName)
                        throws org.apache.maven.wagon.TransferFailedException,
                               org.apache.maven.wagon.authorization.AuthorizationException</PRE>
 <DL>
@@ -767,6 +779,6 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&n
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 
 <HR>
-Copyright &#169; 2010 <a href="http://www.kathrynhuxtable.org">kathrynhuxtable.org</a>. All Rights Reserved.
+Copyright &#169; 2010-2012 <a href="http://www.kathrynhuxtable.org">kathrynhuxtable.org</a>. All Rights Reserved.
 </BODY>
 </HTML>
