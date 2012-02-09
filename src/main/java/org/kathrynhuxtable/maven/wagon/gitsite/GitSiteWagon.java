@@ -138,16 +138,16 @@ public class GitSiteWagon extends AbstractWagon {
     }
 
     /**
-     * Get the {@link siteBranch} used in this Wagon.
+     * Get the {@link #siteBranch} used in this Wagon.
      *
-     * @return the {@link siteBranch}.
+     * @return the {@link #siteBranch}.
      */
     public String getSiteBranch() {
         return siteBranch;
     }
 
     /**
-     * Set the {@link siteBranch} used in this Wagon.
+     * Set the {@link #siteBranch} used in this Wagon.
      *
      * @param siteBranch the siteBranch to set.
      */
@@ -159,7 +159,7 @@ public class GitSiteWagon extends AbstractWagon {
      * Get the directory where Wagon will checkout files from SCM. This
      * directory will be deleted!
      *
-     * @return the {@link checkoutDirectory}.
+     * @return the {@link #checkoutDirectory}.
      */
     public File getCheckoutDirectory() {
         return checkoutDirectory;
