@@ -437,12 +437,28 @@ public class GitSiteWagon extends AbstractWagon {
         return relPath;
     }
 
+    private List<File> buildFiles(ScmProvider scmProvider, File basedir, String scmFilePath) {
+        List<File> result = new ArrayList<File>();
+        if (scmFilePath.length() != 0) {
+            result.add(new File(scmFilePath));
+        }
+        String reservedScmFile = scmProvider.getScmSpecificFilename();
+        File scmFile = new File(basedir, scmFilePath);
+        if (scmFile.isDirectory()) {
+            File[] f = scmFile.listFiles();
+
+            for (int i = 0; i < f.length; i++) {
+                if (reservedScmFile != null && !reservedScmFile.equals(f[i].getName())) {
+                    result.addAll(buildFiles(scmProvider, basedir, (scmFilePath.length() == 0 ? "" : scmFilePath + "/") + f[i].getName()));
+                }
+            }
+        }
+        return result;
+    }
+
     /**
      * Add a file or directory to a SCM repository. If it's a directory all its
      * contents are added recursively.
-     *
-     * <p>TODO this is less than optimal, SCM API should provide a way to add a
-     * directory recursively</p>
      *
      * @param  scmProvider   SCM provider
      * @param  scmRepository SCM repository
@@ -455,39 +471,17 @@ public class GitSiteWagon extends AbstractWagon {
      * @throws ScmException
      */
     private int addFiles(ScmProvider scmProvider, ScmRepository scmRepository, File basedir, String scmFilePath) throws ScmException {
-        int addedFiles = 0;
-
-        File scmFile = new File(basedir, scmFilePath);
-
-        if (scmFilePath.length() != 0) {
-            AddScmResult result = scmProvider.add(scmRepository, new ScmFileSet(basedir, new File(scmFilePath)));
-
-            /*
-             * TODO dirty fix to work around files with property svn:eol-style=native if a file has that property, first
-             * time file is added it fails, second time it succeeds the solution is check if the scm provider is svn and
-             * unset that property when the SCM API allows it
-             */
-            if (!result.isSuccess()) {
-                result = scmProvider.add(scmRepository, new ScmFileSet(basedir, new File(scmFilePath)));
-            }
-
-            addedFiles = result.getAddedFiles().size();
+        AddScmResult result = scmProvider.add(scmRepository, new ScmFileSet(basedir, buildFiles(scmProvider, basedir, scmFilePath)));
+        /*
+         * TODO dirty fix to work around files with property svn:eol-style=native if a file has that property, first
+         * time file is added it fails, second time it succeeds the solution is check if the scm provider is svn and
+         * unset that property when the SCM API allows it
+         */
+        if (!result.isSuccess()) {
+            result = scmProvider.add(scmRepository, new ScmFileSet(basedir, new File(scmFilePath)));
         }
 
-        String reservedScmFile = scmProvider.getScmSpecificFilename();
-
-        if (scmFile.isDirectory()) {
-            File[] files = scmFile.listFiles();
-
-            for (int i = 0; i < files.length; i++) {
-                if (reservedScmFile != null && !reservedScmFile.equals(files[i].getName())) {
-                    addedFiles += addFiles(scmProvider, scmRepository, basedir,
-                                           (scmFilePath.length() == 0 ? "" : scmFilePath + "/") + files[i].getName());
-                }
-            }
-        }
-
-        return addedFiles;
+        return result.getAddedFiles().size();
     }
 
     /**
