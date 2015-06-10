@@ -511,7 +511,7 @@ public class GitSiteWagon extends AbstractWagon {
             if (index > -1) {
                 siteBranch = url.substring(index + 1);
                 url        = url.substring(0, index);
-            } else if (url.indexOf(".github.com.git") != -1) {
+            } else if (url.indexOf(".github.io.git") != -1) {
                 // it's a master page
                 siteBranch = "master";
             }else {
